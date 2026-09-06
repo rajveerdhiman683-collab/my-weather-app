@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WeatherWise | AI Intelligence Dashboard</title>
+    <meta name="description" content="Real-time hyper-local weather intelligence, AI predictive insights, live UV tracking, and air quality analytics with WeatherWise.">
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    <link rel="stylesheet" href="core.css">
+    <link rel="stylesheet" href="app.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Animated Background Ambient Orbs -->
+    <div class="bg-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <!-- Main App Container -->
+    <div class="app">
+        <!-- App Header -->
+        <header class="app-header">
+            <div class="header-container">
+                <div class="header-left">
+                    <a href="index.html" class="back-btn" title="Back to Home" aria-label="Back to Home">
+                        <i class="fas fa-arrow-left"></i>
+                    </a>
+                    <a href="index.html" class="brand-logo" title="WeatherWise Home">
+                        <img src="assets/logo.svg" alt="WeatherWise Logo" class="brand-icon">
+                        <span class="brand-name">Weather<span class="brand-highlight">Wise</span></span>
+                    </a>
+                </div>
+                
+                <div class="header-right">
+                    <!-- Share Button -->
+                    <button id="shareBtn" class="share-btn glass-btn" type="button" title="Share current weather link" aria-label="Share weather link">
+                        <i class="fas fa-share-nodes"></i>
+                        <span class="share-btn-text">Share</span>
+                    </button>
+
+                    <!-- Temperature Unit Switcher -->
+                    <div class="unit-toggle" id="unitToggle" role="group" aria-label="Temperature Unit">
+                        <button class="unit-btn active" data-unit="C" aria-label="Celsius">°C</button>
+                        <button class="unit-btn" data-unit="F" aria-label="Fahrenheit">°F</button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content Area -->
+        <main class="container">
+            <!-- Search & Geolocation Section -->
+            <section class="search-section" aria-label="Search Weather">
+                <div class="search-wrapper">
+                    <div class="search-box">
+                        <i class="fas fa-search search-icon"></i>
+                        <input 
+                            type="text" 
+                            id="city" 
+                            placeholder="Search city or destination (e.g. Tokyo, Paris, New York)..." 
+                            class="search-input"
+                            autocomplete="off"
+                            aria-label="City name"
+                        >
+                        <button id="geoLocateBtn" class="geo-btn" title="Use current GPS location" type="button" aria-label="Locate me">
+                            <i class="fas fa-location-crosshairs"></i>
+                        </button>
+                        <button id="searchBtn" class="search-btn glass-btn" type="button" aria-label="Search">
+                            <span>Search</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+
+                    <!-- Autocomplete Dropdown -->
+                    <div id="autocomplete-dropdown" class="autocomplete-dropdown hidden"></div>
+
+                    <!-- Recent Searches Dynamic Bar -->
+                    <div id="recentSearches" class="recent-searches hidden"></div>
+
+                    <!-- Popular Suggestions -->
+                    <div class="search-suggestions">
+                        <span class="suggestion-tag">
+                            <span class="popular-label"><i class="fas fa-fire-flame-curved"></i> Popular:</span>
+                            <button type="button" class="quick-chip" onclick="document.getElementById('city').value='London'; document.getElementById('searchBtn').click();">London</button>
+                            <button type="button" class="quick-chip" onclick="document.getElementById('city').value='New York'; document.getElementById('searchBtn').click();">New York</button>
+                            <button type="button" class="quick-chip" onclick="document.getElementById('city').value='Tokyo'; document.getElementById('searchBtn').click();">Tokyo</button>
+                            <button type="button" class="quick-chip" onclick="document.getElementById('city').value='Dubai'; document.getElementById('searchBtn').click();">Dubai</button>
+                            <button type="button" class="quick-chip" onclick="document.getElementById('city').value='Paris'; document.getElementById('searchBtn').click();">Paris</button>
+                        </span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Skeleton Loader -->
+            <div id="skeletonLoader" class="skeleton-overlay hidden" aria-live="polite">
+                <div class="skeleton-card glass-card">
+                    <div class="skeleton-header">
+                        <div class="skeleton skeleton-title"></div>
+                        <div class="skeleton skeleton-icon"></div>
+                    </div>
+                    <div class="skeleton skeleton-temp"></div>
+                    <div class="skeleton-grid">
+                        <div class="skeleton skeleton-item"></div>
+                        <div class="skeleton skeleton-item"></div>
+                        <div class="skeleton skeleton-item"></div>
+                        <div class="skeleton skeleton-item"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Weather Display Section -->
+            <section id="weatherResult" class="weather-display hidden" aria-live="polite">
+                <div class="weather-card glass-card">
+                    <!-- Weather Card Header -->
+                    <div class="weather-header">
+                        <div class="location-info">
+                            <div class="badge-row">
+                                <span class="section-badge"><i class="fas fa-circle-dot live-pulse"></i> Live Weather</span>
+                                <span id="countryBadge" class="country-pill">-</span>
+                            </div>
+                            <h2 id="cityName" class="city-name">-</h2>
+                            <p id="description" class="weather-description">-</p>
+                        </div>
+                        <div id="weatherIcon" class="weather-icon-large">
+                            <i class="fas fa-cloud-sun"></i>
+                        </div>
+                    </div>
+
+                    <!-- Main Temperature Display -->
+                    <div class="temperature-section">
+                        <div class="temp-main">
+                            <span id="temperature" class="temperature">-°C</span>
+                            <span class="temp-label">Current Ambient</span>
+                        </div>
+                        <div class="temp-divider"></div>
+                        <div class="temp-feels">
+                            <span class="feels-label">Feels like</span>
+                            <span class="feels-temp" id="feelsLike">-°C</span>
+                        </div>
+                    </div>
+
+                    <!-- Atmospheric Details Grid -->
+                    <div class="weather-details">
+                        <!-- Humidity -->
+                        <div class="detail-card">
+                            <div class="detail-icon icon-humidity"><i class="fas fa-droplet"></i></div>
+                            <div class="detail-content">
+                                <span class="detail-label">Humidity</span>
+                                <span id="humidity" class="detail-value">-</span>
+                            </div>
+                        </div>
+
+                        <!-- Wind -->
+                        <div class="detail-card">
+                            <div class="detail-icon icon-wind"><i class="fas fa-wind"></i></div>
+                            <div class="detail-content">
+                                <span class="detail-label">Wind Velocity</span>
+                                <span id="wind" class="detail-value">-</span>
+                            </div>
+                        </div>
+
+                        <!-- UV Index -->
+                        <div class="detail-card">
+                            <div class="detail-icon icon-uv"><i class="fas fa-sun"></i></div>
+                            <div class="detail-content">
+                                <span class="detail-label">UV Index</span>
+                                <span id="uvIndex" class="detail-value">-</span>
+                            </div>
+                        </div>
+
+                        <!-- Air Quality -->
+                        <div class="detail-card">
+                            <div class="detail-icon icon-aqi"><i class="fas fa-shield-heart"></i></div>
+                            <div class="detail-content">
+                                <span class="detail-label">Air Quality (AQI)</span>
+                                <span id="aqi" class="detail-value">-</span>
+                            </div>
+                        </div>
+
+                        <!-- Pressure -->
+                        <div class="detail-card">
+                            <div class="detail-icon icon-pressure"><i class="fas fa-gauge-high"></i></div>
+                            <div class="detail-content">
+                                <span class="detail-label">Pressure</span>
+                                <span id="pressure" class="detail-value">-</span>
+                            </div>
+                        </div>
+
+                        <!-- Visibility -->
+                        <div class="detail-card">
+                            <div class="detail-icon icon-vis"><i class="fas fa-eye"></i></div>
+                            <div class="detail-content">
+                                <span class="detail-label">Visibility</span>
+                                <span id="visibility" class="detail-value">-</span>
+                            </div>
+                        </div>
+
+                        <!-- Sunrise -->
+                        <div class="detail-card">
+                            <div class="detail-icon icon-sunrise"><i class="fas fa-sun-plant-wilt"></i></div>
+                            <div class="detail-content">
+                                <span class="detail-label">Sunrise</span>
+                                <span id="sunrise" class="detail-value">-</span>
+                            </div>
+                        </div>
+
+                        <!-- Sunset -->
+                        <div class="detail-card">
+                            <div class="detail-icon icon-sunset"><i class="fas fa-cloud-moon"></i></div>
+                            <div class="detail-content">
+                                <span class="detail-label">Sunset</span>
+                                <span id="sunset" class="detail-value">-</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5-Day Forecast -->
+                <div class="forecast-section" style="margin-top: 40px;">
+                    <div class="section-header">
+                        <h2>5-Day Extended Forecast</h2>
+                        <span class="ai-badge"><i class="fas fa-chart-line"></i> Deep Analytics</span>
+                    </div>
+                    <div id="forecastGrid" class="forecast-grid">
+                        <!-- Dynamically populated -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Recommendations Section -->
+            <section id="recommendationsSection" class="recommendations-section hidden">
+                <div class="section-header">
+                    <h2>Smart Weather Intelligence</h2>
+                    <span class="ai-badge">
+                        <i class="fas fa-wand-magic-sparkles"></i>
+                        AI-Powered Insights
+                    </span>
+                </div>
+                
+                <div class="recommendations-grid" id="recommendationsGrid">
+                    <!-- Populated by RecommendationEngine in script.js -->
+                </div>
+            </section>
+
+            <!-- Empty / Welcome State -->
+            <section class="empty-state" id="emptyState">
+                <div class="empty-content glass-card">
+                    <div class="empty-logo-wrapper">
+                        <img src="assets/logo.svg" alt="WeatherWise Emblem" class="empty-brand-logo">
+                    </div>
+                    <h2>Explore Global Weather Intelligence</h2>
+                    <p>Enter any city name or tap your current location to reveal real-time meteorology and AI-tailored daily lifestyle guidance.</p>
+                    <div class="empty-features">
+                        <div class="empty-feature">
+                            <i class="fas fa-satellite-dish"></i>
+                            <span>Live Doppler Radar</span>
+                        </div>
+                        <div class="empty-feature">
+                            <i class="fas fa-sparkles"></i>
+                            <span>AI Lifestyle Recommendations</span>
+                        </div>
+                        <div class="empty-feature">
+                            <i class="fas fa-shield-halved"></i>
+                            <span>Live UV & AQI Metrics</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="app-footer">
+            <div class="footer-inner">
+                <p>&copy; 2025 WeatherWise Inc. All rights reserved. | Handcrafted with <i class="fas fa-heart text-emerald"></i> by <strong>Rajveer Dhiman</strong></p>
+                <div class="footer-socials">
+                    <a href="https://www.linkedin.com/in/rajveer-dhiman" target="_blank" rel="noopener noreferrer" title="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://github.com/rajveer-dhiman" target="_blank" rel="noopener noreferrer" title="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </div>
+            </div>
+        </footer>
+        <!-- Toast Notification -->
+        <div id="shareToast" class="share-toast hidden" role="status" aria-live="polite">
+            <i class="fas fa-circle-check"></i>
+            <span>Link copied to clipboard! Send it to anyone.</span>
+        </div>
+    </div>
+
+    <!-- Unified Application Script -->
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+# Environment secrets
+.env
+.env.local
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS and Editor
+.DS_Store
+Thumbs.db
+.vscode/

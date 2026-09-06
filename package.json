@@ -1,0 +1,11 @@
+{
+  "name": "weatherwise",
+  "version": "1.0.0",
+  "description": "WeatherWise - SaaS AI Weather Intelligence Platform",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "Rajveer Dhiman",
+  "license": "MIT"
+}

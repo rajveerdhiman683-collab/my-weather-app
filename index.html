@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WeatherWise | Premium AI Weather Intelligence</title>
+    <meta name="description" content="Experience hyper-accurate, AI-powered weather forecasts with WeatherWise. Premium glassmorphism design, real-time analytics, UV tracking, and personalized smart recommendations.">
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    <link rel="stylesheet" href="core.css">
+    <link rel="stylesheet" href="landing.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Animated Ambient Background Orbs -->
+    <div class="bg-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="brand-logo" title="WeatherWise">
+                <img src="assets/logo.svg" alt="WeatherWise Logo" class="brand-icon">
+                <span class="brand-name">Weather<span class="brand-highlight">Wise</span></span>
+            </a>
+
+            <div class="nav-links" id="navLinks">
+                <a href="#features">Features</a>
+                <a href="#preview">Live Preview</a>
+                <a href="app.html" class="mobile-only-btn">Launch Dashboard</a>
+            </div>
+
+            <div class="nav-actions">
+                <a href="app.html" class="get-started-btn desktop-only">
+                    <span>Launch App</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle Navigation Menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content reveal">
+                <div class="hero-badge">
+                    <i class="fas fa-bolt text-emerald"></i>
+                    Next-Gen Atmospheric Intelligence
+                </div>
+                <h1 class="hero-title">
+                    <span class="gradient-text">Smart Weather</span>
+                    <br>For Precision Living
+                </h1>
+                <p class="hero-subtitle">
+                    Hyper-local meteorology, real-time UV index, air quality intelligence, 
+                    and AI lifestyle recommendations tailored to your daily itinerary.
+                </p>
+                <div class="hero-cta">
+                    <a href="app.html" class="primary-btn">
+                        <span>Launch Live Dashboard</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="#preview" class="secondary-btn">
+                        <i class="fas fa-chart-simple"></i> View Preview
+                    </a>
+                </div>
+                
+                <!-- Metrics Bar -->
+                <div class="stats-container">
+                    <div class="stat-item">
+                        <span class="stat-number">200K+</span>
+                        <span class="stat-label">Cities Covered</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">99.8%</span>
+                        <span class="stat-label">Model Accuracy</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">4.9/5</span>
+                        <span class="stat-label">Global Rating</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Floating Weather Showcase Cards -->
+            <div class="hero-cards">
+                <div class="floating-card card-1 glass-card">
+                    <div class="card-header">
+                        <span class="city"><i class="fas fa-location-dot"></i> New York</span>
+                        <span class="time">12:30 PM</span>
+                    </div>
+                    <div class="card-weather">
+                        <div class="temp">21°C</div>
+                        <div class="weather-icon">
+                            <i class="fas fa-cloud-sun text-emerald"></i>
+                        </div>
+                    </div>
+                    <div class="card-desc">Partly Cloudy</div>
+                    <div class="card-details">
+                        <div><i class="fas fa-droplet"></i> 64% Humidity</div>
+                        <div><i class="fas fa-wind"></i> 14 km/h NW</div>
+                    </div>
+                </div>
+
+                <div class="floating-card card-2 glass-card">
+                    <div class="card-header">
+                        <span class="city"><i class="fas fa-location-dot"></i> Tokyo</span>
+                        <span class="time">9:45 PM</span>
+                    </div>
+                    <div class="card-weather">
+                        <div class="temp">18°C</div>
+                        <div class="weather-icon">
+                            <i class="fas fa-cloud-moon text-blue"></i>
+                        </div>
+                    </div>
+                    <div class="card-desc">Clear Night Sky</div>
+                    <div class="card-details">
+                        <div><i class="fas fa-droplet"></i> 48% Humidity</div>
+                        <div><i class="fas fa-shield-heart"></i> AQI 1 (Good)</div>
+                    </div>
+                </div>
+
+                <div class="floating-card card-3 glass-card">
+                    <div class="card-header">
+                        <span class="city"><i class="fas fa-location-dot"></i> London</span>
+                        <span class="time">5:15 PM</span>
+                    </div>
+                    <div class="card-weather">
+                        <div class="temp">16°C</div>
+                        <div class="weather-icon">
+                            <i class="fas fa-cloud-rain text-cyan"></i>
+                        </div>
+                    </div>
+                    <div class="card-desc">Light Showers</div>
+                    <div class="card-details">
+                        <div><i class="fas fa-droplet"></i> 79% Humidity</div>
+                        <div><i class="fas fa-umbrella"></i> Rain Expected</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="features container">
+            <div class="section-header reveal">
+                <span class="section-badge">Platform Capabilities</span>
+                <h2>Engineered for Unrivaled Accuracy</h2>
+                <p>Designed with luxury glassmorphic aesthetics and real-time planetary meteorological APIs.</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card reveal glass-card">
+                    <div class="feature-icon icon-ai">
+                        <i class="fas fa-wand-magic-sparkles"></i>
+                    </div>
+                    <h3>AI Lifestyle Guidance</h3>
+                    <p>Machine-learning recommendations tailored for outdoor workouts, travel, eco-drying, and photography.</p>
+                </div>
+
+                <div class="feature-card reveal glass-card">
+                    <div class="feature-icon icon-uv">
+                        <i class="fas fa-sun"></i>
+                    </div>
+                    <h3>Real-Time UV Tracking</h3>
+                    <p>Solar irradiance sensors and UV index monitoring to protect your skin and maximize wellness hours.</p>
+                </div>
+
+                <div class="feature-card reveal glass-card">
+                    <div class="feature-icon icon-aqi">
+                        <i class="fas fa-shield-heart"></i>
+                    </div>
+                    <h3>Air Quality (AQI) Analytics</h3>
+                    <p>Granular breakdown of particulate levels, respiratory hazard assessments, and smog forecasting.</p>
+                </div>
+
+                <div class="feature-card reveal glass-card">
+                    <div class="feature-icon icon-gps">
+                        <i class="fas fa-location-crosshairs"></i>
+                    </div>
+                    <h3>Precision Geolocation</h3>
+                    <p>Single-tap GPS detection delivering hyper-local ambient readings directly from your closest weather station.</p>
+                </div>
+
+                <div class="feature-card reveal glass-card">
+                    <div class="feature-icon icon-forecast">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>5-Day Deep Analytics</h3>
+                    <p>Multi-day projections analyzing temperature deltas, barometric variance, and precipitation likelihood.</p>
+                </div>
+
+                <div class="feature-card reveal glass-card">
+                    <div class="feature-icon icon-units">
+                        <i class="fas fa-temperature-three-quarters"></i>
+                    </div>
+                    <h3>Dynamic Unit Switching</h3>
+                    <p>Instantaneous toggle between Celsius (°C) and Fahrenheit (°F) with local memory persistence.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Preview Showcase Section -->
+        <section id="preview" class="preview container">
+            <div class="preview-container reveal glass-card">
+                <div class="preview-content">
+                    <span class="section-badge">Live Experience</span>
+                    <h2>The Most Beautiful Weather App You've Ever Used</h2>
+                    <p>From micro-animations to glassmorphism depth, experience weather data as an intuitive visual artwork.</p>
+                    
+                    <div class="preview-stats">
+                        <div class="preview-stat">
+                            <span class="stat-circle" style="background: #10b981"></span>
+                            <span>Live Doppler Sync</span>
+                        </div>
+                        <div class="preview-stat">
+                            <span class="stat-circle" style="background: #f59e0b"></span>
+                            <span>5-Day AI Forecast</span>
+                        </div>
+                        <div class="preview-stat">
+                            <span class="stat-circle" style="background: #3b82f6"></span>
+                            <span>Global Geocoding</span>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 30px;">
+                        <a href="app.html" class="primary-btn">
+                            <span>Open WeatherWise App</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="preview-showcase">
+                    <div class="showcase-card main-card glass-card">
+                        <div class="showcase-badge"><i class="fas fa-circle-dot live-pulse"></i> Live Preview</div>
+                        <div class="showcase-temp">24°C</div>
+                        <div class="showcase-desc">Optimal Outdoor Window</div>
+                        <div class="showcase-mini-cards">
+                            <div class="mini-card">
+                                <span class="mini-temp">UV 2.4</span>
+                                <span class="mini-label">Low Index</span>
+                                <i class="fas fa-sun text-amber"></i>
+                            </div>
+                            <div class="mini-card">
+                                <span class="mini-temp">AQI 1</span>
+                                <span class="mini-label">Air Pristine</span>
+                                <i class="fas fa-shield-heart text-emerald"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer with Creator Credits -->
+        <footer class="footer">
+            <div class="footer-brand">
+                <a href="index.html" class="brand-logo" title="WeatherWise">
+                    <img src="assets/logo.svg" alt="WeatherWise Logo" class="brand-icon">
+                    <span class="brand-name">Weather<span class="brand-highlight">Wise</span></span>
+                </a>
+                <p class="brand-tagline">AI-Powered Meteorological Intelligence & Lifestyle Advisory</p>
+            </div>
+
+            <div class="creator-credit reveal">
+                <div class="creator-name">
+                    Engineered & Crafted by <span>Rajveer Dhiman</span>
+                </div>
+                <div class="social-links-footer">
+                    <a href="https://www.linkedin.com/in/rajveer-dhiman" target="_blank" rel="noopener noreferrer" class="social-link linkedin" title="LinkedIn - Rajveer Dhiman">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://github.com/rajveer-dhiman" target="_blank" rel="noopener noreferrer" class="social-link github" title="GitHub - Rajveer Dhiman">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </div>
+            </div>
+            <p class="copyright">&copy; 2025 WeatherWise Inc. All rights reserved.</p>
+        </footer>
+    </main>
+
+    <script>
+        // Mobile Navigation Toggle
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const navLinks = document.getElementById('navLinks');
+        
+        if (mobileMenuToggle && navLinks) {
+            mobileMenuToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                const icon = mobileMenuToggle.querySelector('i');
+                if (icon) {
+                    icon.classList.toggle('fa-bars');
+                    icon.classList.toggle('fa-xmark');
+                }
+            });
+        }
+
+        // Scroll Reveal Observer
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach(el => {
+            revealObserver.observe(el);
+        });
+
+        // Smooth Anchor Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                if (navLinks) navLinks.classList.remove('active');
+                const targetId = this.getAttribute('href');
+                if (targetId && targetId !== '#') {
+                    const target = document.querySelector(targetId);
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
